@@ -1,9 +1,17 @@
 public class Cell {
-    public int state; // State of the cell.
-    int[] neighbours; // Array of states of the cell's neighbours.
+    int state; // State of the cell.
+    Cell[] cellNeighbours; // Array of the cell's neighbours.
+    int nulls;
+    int[] pos;
 
-    public Cell(int state) // init function to create Cell object.
-    {
+    Cell(int state) {
         this.state = state;
+    }
+
+    Cell(Cell cell) {
+        state = cell.state;
+        cellNeighbours = cell.cellNeighbours;
+        nulls = cell.nulls;
+        pos = cell.pos;
     }
 }

@@ -3,21 +3,39 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        Universe uni = new Universe(10, 4, false, 1);
-        uni.setNeighborhood("vn", 2);
-        uni.initialize();
+        int size = 100;
+        int time = 100;
 
-//        int[][] colors = new int[4][3];
-//        colors[0] = new int[]{0, 0, 0};
-//        colors[1] = new int[]{255, 0, 0};
-//        colors[2] = new int[]{255, 255, 0};
-//        colors[3] = new int[]{255, 255, 255};
+        Universe uni = new Universe(size, 2, true, time);
 
-        int i = 1;
-        int j = 1;
-        System.out.println(Arrays.toString(uni.getCellNeighbors(0, i, j)));
-        System.out.println(uni.universe[0][i][j].state);
+        int[][] start = new int[size][size];
+        start[0][1] = 1;
+        start[2][0] = 1;
+        start[1][2] = 1;
+        start[2][1] = 1;
+        start[2][2] = 1;
+        uni.initialize(start);
 
-        uni.animate(500, 0);
+//        uni.initialize();
+        uni.setNeighborhood(Universe.Neighborhood.MOORE, 1);
+
+        int[][][] ruleTable = new int[][][]{
+                {{0, 1}, {3, 1}},
+                {{1, 0}, {0, 1}},
+                {{1, 0}, {1, 1}},
+                {{1, 0}, {4, 1}},
+                {{1, 0}, {5, 1}},
+                {{1, 0}, {6, 1}},
+                {{1, 0}, {7, 1}},
+                {{1, 0}, {8, 1}},
+        };
+        uni.setRule(new Rule(ruleTable));
+
+//        uni.setRule();
+
+        uni.create();
+//        uni.draw(0);
+
+        uni.animate(500);
     }
 }
