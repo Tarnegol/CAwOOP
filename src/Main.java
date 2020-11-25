@@ -34,8 +34,7 @@ public class Main {
 //        uni.setRule();
 
         uni.create();
-//        uni.draw(0);
 
-        uni.animate(500);
+        uni.animate(500, 43, 0);
     }
 }

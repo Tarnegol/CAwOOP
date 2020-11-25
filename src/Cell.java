@@ -4,10 +4,20 @@ public class Cell {
     int nulls;
     int[] pos;
 
+    /**
+     * Constructor of a Cell, defining it's state.
+     *
+     * @param state the state of the Cell.
+     */
     Cell(int state) {
         this.state = state;
     }
 
+    /**
+     * Copy constructor of Cell.
+     *
+     * @param cell the cell to copy.
+     */
     Cell(Cell cell) {
         state = cell.state;
         cellNeighbours = cell.cellNeighbours;

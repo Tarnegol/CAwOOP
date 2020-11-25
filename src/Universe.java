@@ -365,21 +365,15 @@ public class Universe {
         }
     }
 
-//    public void setCanvas(int size, int time) {
-//        canvas = new Canvas(size, this, time);
-//    }
-//
-//    public void setCanvas(int size, int time, int[][] colors) {
-//        canvas = new Canvas(size, this, time, colors);
-//    }
-//
-//    public void draw(int time) {
-//        canvas.time = time;
-//        canvas.advance();
-//    }
-
-    public void animate(int size) {
-        new CanvasFrame(size, this, 0);
+    /**
+     * Generates a GUI graphing the Universe.
+     *
+     * @param size  the size of the GUI (in pixels).
+     * @param time  the time in the Universe to draw.
+     * @param delay the delay between to time steps. Setting the delay to 0 will result with a still graph.
+     */
+    public void animate(int size, int time, int delay) {
+        new CanvasFrame(size, this, time, delay);
     }
 
     /**

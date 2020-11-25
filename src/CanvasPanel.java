@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 
 
-public class CanvasPanel extends JPanel implements ActionListener {
+class CanvasPanel extends JPanel implements ActionListener {
     int size;
     Universe uni;
     int time;
@@ -13,7 +13,7 @@ public class CanvasPanel extends JPanel implements ActionListener {
     Timer timer;
     JLabel timeText = new JLabel(String.format("Universe at time %d", time));
 
-    CanvasPanel(int size, Universe uni, int time) {
+    CanvasPanel(int size, Universe uni, int time, int delay) {
         this.setPreferredSize(new Dimension(size, size + 30));
         this.size = size;
         this.uni = uni;
@@ -31,11 +31,13 @@ public class CanvasPanel extends JPanel implements ActionListener {
         timeText.setForeground(Color.WHITE);
         this.add(timeText);
 
-        timer = new Timer(100, this);
-        timer.start();
+        if (delay > 0) {
+            timer = new Timer(delay, this);
+            timer.start();
+        }
     }
 
-    CanvasPanel(int size, Universe uni, int time, int[][] colors) {
+    CanvasPanel(int size, Universe uni, int time, int delay, int[][] colors) {
         this.setPreferredSize(new Dimension(size, size + 30));
         this.size = size;
         this.uni = uni;
@@ -44,8 +46,10 @@ public class CanvasPanel extends JPanel implements ActionListener {
 
         this.setBackground(Color.BLACK);
 
-        timer = new Timer(100, this);
-        timer.start();
+        if (delay > 0) {
+            timer = new Timer(delay, this);
+            timer.start();
+        }
     }
 
     @Override
@@ -66,11 +70,12 @@ public class CanvasPanel extends JPanel implements ActionListener {
                 g2d.setColor(Color.BLACK);
                 g2d.drawLine(j * w, 30, j * w, size + 30);
                 g2d.drawLine(0, j * w + 30, size, j * w + 30);
-                g2d.setColor(Color.WHITE);
-                g2d.drawLine(0, 30, us * w, 30);
-                timeText.setText(String.format("Universe at time %d", time));
             }
         }
+
+        g2d.setColor(Color.WHITE);
+        g2d.drawLine(0, 30, us * w, 30);
+        timeText.setText(String.format("Universe at time %d", time));
     }
 
     @Override
