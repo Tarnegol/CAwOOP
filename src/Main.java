@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -8,15 +6,15 @@ public class Main {
 
         Universe uni = new Universe(size, 2, true, time);
 
-        int[][] start = new int[size][size];
-        start[0][1] = 1;
-        start[2][0] = 1;
-        start[1][2] = 1;
-        start[2][1] = 1;
-        start[2][2] = 1;
-        uni.initialize(start);
+//        int[][] start = new int[size][size];
+//        start[0][1] = 1;
+//        start[2][0] = 1;
+//        start[1][2] = 1;
+//        start[2][1] = 1;
+//        start[2][2] = 1;
+//        uni.initialize(start);
 
-//        uni.initialize();
+        uni.initialize();
         uni.setNeighborhood(Universe.Neighborhood.MOORE, 1);
 
         int[][][] ruleTable = new int[][][]{
@@ -35,6 +33,6 @@ public class Main {
 
         uni.create();
 
-        uni.animate(500, 43, 0);
+        uni.animate(500, 0, 100);
     }
 }

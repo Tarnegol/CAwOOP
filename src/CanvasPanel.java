@@ -6,13 +6,21 @@ import java.util.Arrays;
 
 
 class CanvasPanel extends JPanel implements ActionListener {
-    int size;
-    Universe uni;
-    int time;
-    int[][] colors;
-    Timer timer;
-    JLabel timeText = new JLabel(String.format("Universe at time %d", time));
+    private final int size;
+    private final Universe uni;
+    private int time;
+    private final int[][] colors;
+    private Timer timer;
+    private final JLabel timeText = new JLabel(String.format("Universe at time %d", time));
 
+    /**
+     * Default color scheme constructor. Default color scheme is grey-scale.
+     *
+     * @param size  size of the panel (in pixels). Identical to the size of the frame.
+     * @param uni   the Universe to graph.
+     * @param time  the starting time.
+     * @param delay delay between time steps (in milliseconds). Setting the delay to 0 will result with a still graph.
+     */
     CanvasPanel(int size, Universe uni, int time, int delay) {
         this.setPreferredSize(new Dimension(size, size + 30));
         this.size = size;
@@ -37,6 +45,15 @@ class CanvasPanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Custom color scheme constructor.
+     *
+     * @param size   size of the panel (in pixels). Identical to the size of the frame.
+     * @param uni    the Universe to graph.
+     * @param time   the starting time.
+     * @param delay  delay between time steps (in milliseconds). Setting the delay to 0 will result with a still graph.
+     * @param colors 2d int array of the form int[states][3], represented by RGB color code.
+     */
     CanvasPanel(int size, Universe uni, int time, int delay, int[][] colors) {
         this.setPreferredSize(new Dimension(size, size + 30));
         this.size = size;
@@ -52,6 +69,11 @@ class CanvasPanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Overrides the super class paint method. Uses super class method paint.
+     *
+     * @param g java.awt.Graphics object of the frame.
+     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -78,9 +100,12 @@ class CanvasPanel extends JPanel implements ActionListener {
         timeText.setText(String.format("Universe at time %d", time));
     }
 
+    /**
+     * ActionListener action method to be used by timer.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (time < uni.timeSteps) {
+        if (time < uni.timeSteps - 1) {
             time++;
         }
         repaint();

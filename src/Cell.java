@@ -1,4 +1,4 @@
-public class Cell {
+class Cell {
     int state; // State of the cell.
     Cell[] cellNeighbours; // Array of the cell's neighbours.
     int nulls;

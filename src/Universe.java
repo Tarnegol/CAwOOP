@@ -370,7 +370,7 @@ public class Universe {
      *
      * @param size  the size of the GUI (in pixels).
      * @param time  the time in the Universe to draw.
-     * @param delay the delay between to time steps. Setting the delay to 0 will result with a still graph.
+     * @param delay delay between time steps (in milliseconds). Setting the delay to 0 will result with a still graph.
      */
     public void animate(int size, int time, int delay) {
         new CanvasFrame(size, this, time, delay);
