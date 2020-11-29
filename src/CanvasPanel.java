@@ -23,6 +23,7 @@ class CanvasPanel extends JPanel implements ActionListener {
      */
     CanvasPanel(int size, Universe uni, int time, int delay) {
         this.setPreferredSize(new Dimension(size, size + 30));
+
         this.size = size;
         this.uni = uni;
         this.time = time;
@@ -56,6 +57,7 @@ class CanvasPanel extends JPanel implements ActionListener {
      */
     CanvasPanel(int size, Universe uni, int time, int delay, int[][] colors) {
         this.setPreferredSize(new Dimension(size, size + 30));
+
         this.size = size;
         this.uni = uni;
         this.time = time;
@@ -79,20 +81,21 @@ class CanvasPanel extends JPanel implements ActionListener {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        int w = size / uni.size;
         int[] c;
         int us = uni.size;
+        int w = size / us;
 
         for (int i = 0; i < us; i++) {
             for (int j = 0; j < us; j++) {
                 c = colors[uni.universe[time][j][i].state];
                 g2d.setColor(new Color(c[0], c[1], c[2]));
-                g2d.drawRect(i * w, j * w + 30, w, w);
                 g2d.fillRect(i * w, j * w + 30, w, w);
-                g2d.setColor(Color.BLACK);
-                g2d.drawLine(j * w, 30, j * w, size + 30);
-                g2d.drawLine(0, j * w + 30, size, j * w + 30);
             }
+        }
+        g2d.setColor(Color.BLACK);
+        for (int i = 0; i < us; i++) {
+            g2d.drawLine(i * w, 30, i * w, size + 30);
+            g2d.drawLine(0, i * w + 30, size, i * w + 30);
         }
 
         g2d.setColor(Color.WHITE);

@@ -17,6 +17,7 @@ public class Main {
         uni.initialize();
         uni.setNeighborhood(Universe.Neighborhood.MOORE, 1);
 
+        // Game of Life rule
         int[][][] ruleTable = new int[][][]{
                 {{0, 1}, {3, 1}},
                 {{1, 0}, {0, 1}},
