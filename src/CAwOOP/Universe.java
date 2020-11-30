@@ -3,13 +3,10 @@ package CAwOOP;
 import java.util.*;
 
 public class Universe {
-    final int size; // Size of the Universe.
-    final int states; // Number of possible cell states.
+    protected final int size; // Size of the Universe.
+    protected final int states; // Number of possible cell states.
 
-    Cell[][][] universe; /// 3d Cell array to record the universe (2d) over time.
-
-    public enum Neighborhood // Contains the neighborhood types available for the user.
-    {VONNEUMANN, MOORE}
+    protected Cell[][][] universe; /// 3d Cell array to record the universe (2d) over time.
 
     private final boolean borders; // Determines if the Universe is cyclic or has borders.
     private Neighborhood neighborhood; // The Universe's neighborhood.
@@ -17,7 +14,9 @@ public class Universe {
 
     private Rule rule; // The Universe's advancement rule.
 
-    final int timeSteps; // The number of time steps to generate.
+    protected final int timeSteps; // The number of time steps to generate.
+
+    private CanvasFrame frame;
 
     /**
      * Constructor with random conditions.
@@ -118,7 +117,7 @@ public class Universe {
     /**
      * Manually determine the neighborhood conditions of the Universe.
      *
-     * @param neighborhood the neighborhood type of the Universe: VONNEUMANN or MOORE.
+     * @param neighborhood the neighborhood type of the Universe: VN or MOORE.
      * @param radius       the Universe's neighborhood radius.
      */
     public void setNeighborhood(Neighborhood neighborhood, int radius) {
@@ -141,7 +140,7 @@ public class Universe {
                     cyclicMoore(cell);
                 }
                 break;
-            case VONNEUMANN:
+            case VN:
                 if (borders) {
                     bordersVonNeumann(cell);
                 } else {
@@ -375,7 +374,7 @@ public class Universe {
      * @param delay delay between time steps (in milliseconds). Setting the delay to 0 will result with a still graph.
      */
     public void animate(int size, int time, int delay) {
-        new CanvasFrame(size, this, time, delay);
+        frame = new CanvasFrame(size, this, time, delay);
     }
 
     /**

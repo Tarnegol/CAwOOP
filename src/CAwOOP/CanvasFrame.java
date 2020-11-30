@@ -3,8 +3,6 @@ package CAwOOP;
 import javax.swing.*;
 
 class CanvasFrame extends JFrame {
-    CanvasPanel panel;
-
     /**
      * Constructor.
      *
@@ -14,7 +12,7 @@ class CanvasFrame extends JFrame {
      * @param delay delay between time steps (in milliseconds).
      */
     CanvasFrame(int size, Universe uni, int time, int delay) {
-        panel = new CanvasPanel(size, uni, time, delay);
+        CanvasPanel panel = new CanvasPanel(size, uni, time, delay);
 
         this.setTitle(String.format("Cellular Automata with size %d and %d states", uni.size, uni.states));
 

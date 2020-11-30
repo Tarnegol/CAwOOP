@@ -1,10 +1,10 @@
 package CAwOOP;
 
 class Cell {
-    int state; // State of the cell.
-    Cell[] cellNeighbours; // Array of the cell's neighbours.
-    int nulls;
-    int[] pos;
+    protected int state; // State of the cell.
+    protected Cell[] cellNeighbours; // Array of the cell's neighbours.
+    protected int nulls;
+    protected int[] pos;
 
     /**
      * Constructor of a Cell, defining it's state.
