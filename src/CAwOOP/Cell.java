@@ -1,3 +1,5 @@
+package CAwOOP;
+
 class Cell {
     int state; // State of the cell.
     Cell[] cellNeighbours; // Array of the cell's neighbours.

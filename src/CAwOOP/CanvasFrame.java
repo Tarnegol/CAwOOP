@@ -1,3 +1,5 @@
+package CAwOOP;
+
 import javax.swing.*;
 
 class CanvasFrame extends JFrame {

@@ -1,3 +1,5 @@
+import CAwOOP.Universe;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -28,7 +30,7 @@ public class Main {
                 {{1, 0}, {7, 1}},
                 {{1, 0}, {8, 1}},
         };
-        uni.setRule(new Rule(ruleTable));
+        uni.setRule(ruleTable);
 
 //        uni.setRule();
 

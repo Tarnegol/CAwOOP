@@ -1,3 +1,5 @@
+package CAwOOP;
+
 class Rule {
     private final int[][][] ruleTable;
 

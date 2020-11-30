@@ -1,3 +1,5 @@
+package CAwOOP;
+
 import java.util.*;
 
 public class Universe {
@@ -342,10 +344,10 @@ public class Universe {
     /**
      * Set a custom rule.
      *
-     * @param rule a custom rule for the universe.
+     * @param ruleTable 3d int array as described in the README file.
      */
-    public void setRule(Rule rule) {
-        this.rule = rule;
+    public void setRule(int[][][] ruleTable) {
+        this.rule = new Rule(ruleTable);
     }
 
     /**
